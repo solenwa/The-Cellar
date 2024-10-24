@@ -2,9 +2,9 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Container from 'react-bootstrap/esm/Container';
 import './App.css';
 import NavBar from './components/NavBar';
-import Home from './components/Home';
-import MaCave from './components/MaCave';
-import DetailBouteille from './components/DetailBouteille';
+import Home from './pages/Home';
+import MaCave from './pages/MaCave';
+import DetailBouteille from './pages/DetailBouteille';
 
 function App() {
   return (

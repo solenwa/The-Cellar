@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from '../components/Rating';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/Row';
@@ -24,20 +25,23 @@ function DetailBouteille() {
           <h2 className="display-4">Barberini - 2017</h2>
           <Container>
             <Row>
+              <Rating rating={4}></Rating>
+            </Row>
+            <Row className="text-center">
               <Col>
-                <Card style={({ width: '8rem' }, { alignItems: 'center' })}>
+                <Card style={({ alignItems: 'center' }, { margin: 0 })}>
                   <h3>Quantité</h3>
                   <p>1</p>
                 </Card>
               </Col>
               <Col>
-                <Card style={({ width: '8rem' }, { alignItems: 'center' })}>
+                <Card style={({ alignItems: 'center' }, { margin: 0 })}>
                   <h3>Prix d'achat</h3>
                   <p>N/A</p>
                 </Card>
               </Col>
               <Col>
-                <Card style={({ width: '8rem' }, { alignItems: 'center' })}>
+                <Card style={({ alignItems: 'center' }, { margin: 0 })}>
                   <h3>Pays</h3>
                   <p>France</p>
                 </Card>
@@ -45,19 +49,19 @@ function DetailBouteille() {
             </Row>
             <Row>
               <Col>
-                <Card>
+                <Card className="border-0">
                   <h3>Appelation</h3>
                   <p>Châteauneuf-du-Pape</p>
                 </Card>
               </Col>
               <Col>
-                <Card>
+                <Card className="border-0">
                   <h3>Région</h3>
                   <p>Rhône</p>
                 </Card>
               </Col>
               <Col>
-                <Card>
+                <Card className="border-0">
                   <h3>Couleur</h3>
                   <p>Rouge</p>
                 </Card>
@@ -65,12 +69,12 @@ function DetailBouteille() {
             </Row>
             <Row>
               <Col>
-                <Card>
+                <Card className="border-0">
                   <h3>Cépages</h3>
                   <p>Grenache, Mourvèdre, Syrah</p>
                 </Card>
                 <Col>
-                  <Card>
+                  <Card className="border-0">
                     <h3>Notes</h3>
                     <p></p>
                   </Card>
