@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/esm/Container';
 import './App.css';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
+import MaCave from './components/MaCave';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Container className="mt-3">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/macave" element={<MaCave />} />
           </Routes>
         </Container>
       </main>
