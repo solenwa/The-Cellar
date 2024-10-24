@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import MaCave from './components/MaCave';
+import DetailBouteille from './components/DetailBouteille';
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/macave" element={<MaCave />} />
+            <Route
+              path="/macave/detailbouteille"
+              element={<DetailBouteille />}
+            />
           </Routes>
         </Container>
       </main>
