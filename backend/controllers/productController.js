@@ -1,5 +1,5 @@
-const Product = require('./models/productModel');
-const { uploadToCloudinary } = require('../services/cloudinary');
+import Product from '../models/productModel.js';
+import uploadToCloudinary from '../cloudinary.js';
 
 const createProduct = async (req, res) => {
   const {
@@ -16,10 +16,10 @@ const createProduct = async (req, res) => {
   try {
     let imageData = {};
     if (image) {
-      const results = await uploadToCloudinary(image, 'my-profile');
+      const results = await uploadToCloudinary(image, 'TheCellar');
       imageData = results;
     }
-    const user = await Product.create({
+    const product = await Product.create({
       appellation,
       couleur,
       domaine,
@@ -31,7 +31,7 @@ const createProduct = async (req, res) => {
       image: imageData,
     });
 
-    res.status(200).json(user);
+    res.status(200).json(product);
   } catch (e) {
     res
       .status(500)
@@ -39,4 +39,4 @@ const createProduct = async (req, res) => {
   }
 };
 
-module.exports = { createProduct };
+export default createProduct;

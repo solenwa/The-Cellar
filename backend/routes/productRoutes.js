@@ -1,8 +1,14 @@
-const express = require("express")
+import express from 'express';
+import createProduct from '../controllers/productController.js';
+import Product from '../models/productModel.js';
 
-const {createProduct} = require('../productController')
-const productRouter = express.Router()
+const productRouter = express.Router();
 
-productRouter.post('/', createProduct)
+productRouter.get('/', async (req, res) => {
+  const products = await Product.find();
+  res.send(products);
+});
 
-module.exports = productRouter
+productRouter.post('/', createProduct);
+
+export default productRouter;

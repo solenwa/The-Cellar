@@ -1,9 +1,8 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-const cors = require('cors');
-const connectDB = require('./config_db');
-const productRoute = require('./routes/productRoutes');
+import cors from 'cors';
+import connectDB from './config_db.js';
+import productRoute from './routes/productRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -28,7 +27,7 @@ app.get('/health', (req, res) => {
   res.sendStatus(200);
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Serve at http://localhost:${port}`);
 });

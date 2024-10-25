@@ -1,4 +1,4 @@
-const cloudinary = require('cloudinary').v2;
+import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -6,7 +6,7 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-const uploadToCloudinary = async (path, folder = 'my-profile') => {
+const uploadToCloudinary = async (path, folder = 'TheCellar') => {
   try {
     const data = await cloudinary.uploader.upload(path, { folder: folder });
     return { url: data.secure_url, publicId: data.public_id };
@@ -15,4 +15,4 @@ const uploadToCloudinary = async (path, folder = 'my-profile') => {
     throw err;
   }
 };
-module.exports = { uploadToCloudinary };
+export default { uploadToCloudinary };
