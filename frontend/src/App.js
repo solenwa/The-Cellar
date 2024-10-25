@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import MaCave from './pages/MaCave';
 import DetailBouteille from './pages/DetailBouteille';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
             <Route path="/macave" element={<MaCave />} />
             <Route path="/macave/:id" element={<DetailBouteille />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </Container>
       </main>

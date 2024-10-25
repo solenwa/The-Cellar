@@ -1,19 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
-import { Axios } from 'axios';
+import axios from 'axios';
 import Container from 'react-bootstrap/esm/Container';
 import { Helmet } from 'react-helmet-async';
 import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/Form';
 
-function Login() {
+function Signup() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
 
   const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -23,8 +24,14 @@ function Login() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
     try {
-      const { data } = await Axios.post('/api/users/login', {
+      const { data } = await axios.post('/api/users/signup', {
+        name,
+        lastName,
         email,
         password,
       });
@@ -45,10 +52,28 @@ function Login() {
   return (
     <Container>
       <Helmet>
-        <title>Connexion</title>
+        <title>Inscription</title>
       </Helmet>
-      <h1 className="display-3">Log In</h1>
+      <h1 className="display-3">Inscription</h1>
       <Form onSubmit={submitHandler}>
+        <Form.Group className="mb-3" controlId="formName">
+          <Form.Label>Prénom</Form.Label>
+          <Form.Control
+            type="name"
+            placeholder="Enter name"
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formLastName">
+          <Form.Label>Nom</Form.Label>
+          <Form.Control
+            type="name"
+            placeholder="Enter last name"
+            required
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formEmail">
           <Form.Label>Adresse email</Form.Label>
           <Form.Control
@@ -68,16 +93,25 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+        <Form.Group className="mb-3" controlId="confirmPassword">
+          <Form.Label>Confirmez le mot de passe</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Confirm Password"
+            required
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </Form.Group>
         <Button variant="primary" type="submit">
-          Connexion
+          Inscription
         </Button>
         <div className="mb-3">
-          Première fois sur le site ?{' '}
-          <Link to={`/signup?redirect=${redirect}`}>Créez votre compte</Link>
+          Vous avez déjà un compte ?{' '}
+          <Link to={`/login?redirect=${redirect}`}>Connexion</Link>
         </div>
       </Form>
     </Container>
   );
 }
 
-export default Login;
+export default Signup;
