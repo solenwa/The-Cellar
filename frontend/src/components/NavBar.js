@@ -17,7 +17,7 @@ function NavBar() {
   return (
     <Navbar expand="lg" className="me-auto w-100 justify-content-end">
       <Container>
-        <Navbar.Brand href="#home">The Cellar</Navbar.Brand>
+        <Navbar.Brand href="/">The Cellar</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {userInfo ? (
