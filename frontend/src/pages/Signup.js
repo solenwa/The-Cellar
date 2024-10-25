@@ -6,6 +6,9 @@ import Container from 'react-bootstrap/esm/Container';
 import { Helmet } from 'react-helmet-async';
 import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/Form';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { getError } from '../utils';
 
 function Signup() {
   const navigate = useNavigate();
@@ -39,7 +42,7 @@ function Signup() {
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate(redirect || '/');
     } catch (err) {
-      console.log(err);
+      toast.error(getError(err));
     }
   };
 

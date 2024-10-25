@@ -6,7 +6,7 @@ function Product(props) {
   const { product } = props;
   return (
     <Link to={`/macave/${product._id}`}>
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '12rem' }}>
         <Card.Body>
           {product.image ? (
             <Card.Img
