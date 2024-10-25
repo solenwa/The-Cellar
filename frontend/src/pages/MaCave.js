@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import Card from 'react-bootstrap/Card';
+import { Helmet } from 'react-helmet-async';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -42,6 +42,9 @@ function MaCave() {
 
   return (
     <div>
+      <Helmet>
+        <title>Ma Cave</title>
+      </Helmet>
       <h1 className="display-3">Ma Cave</h1>
       <Container>
         {loading ? (

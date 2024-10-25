@@ -6,10 +6,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Helmet } from 'react-helmet-async';
 
 function Home() {
   return (
     <div className="align-items-center">
+      <Helmet>
+        <title>The Cellar</title>
+      </Helmet>
       <div>
         <Carousel fade>
           <Carousel.Item>
