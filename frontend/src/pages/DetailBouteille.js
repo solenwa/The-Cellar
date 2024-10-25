@@ -59,10 +59,19 @@ function DetailBouteille() {
         <Row>
           <Col xs={5}>
             <Card className="bg-dark text-white">
-              <Card.Img
-                src="https://res.cloudinary.com/dkadjaj7k/image/upload/v1729778831/TheCellar/DomaineDeLaSolitude_Barberini_2017_ymlol5.jpg"
-                alt={`Photo du vin ${product.cuvee} du domaine ${product.domaine}`}
-              />
+              {product.image ? (
+                <Card.Img
+                  variant="top"
+                  src={product.image.url}
+                  alt={`Photo du vin ${product.cuvee} du domaine ${product.domaine}`}
+                />
+              ) : (
+                <Card.Img
+                  variant="top"
+                  src="https://res.cloudinary.com/dkadjaj7k/image/upload/v1729851470/TheCellar/ChateaudeParaza_X_2017_nbiazs.jpg"
+                  alt={`Photo du vin ${product.cuvee} du domaine ${product.domaine}`}
+                />
+              )}
               <Card.ImgOverlay>
                 <Card.Title>{product.domaine}</Card.Title>
                 <Card.Text>{product.cuvee}</Card.Text>

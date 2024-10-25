@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import MaCave from './pages/MaCave';
 import DetailBouteille from './pages/DetailBouteille';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/macave" element={<MaCave />} />
               <Route path="/macave/:id" element={<DetailBouteille />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </Container>
         </main>
