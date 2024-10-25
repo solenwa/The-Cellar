@@ -7,16 +7,16 @@ function Product(props) {
   return (
     <Link to={`/macave/${product._id}`}>
       <Card style={{ width: '18rem' }}>
+        <Card.Body>
         <Card.Img
           variant="top"
-          src={product.image.url}
+          src="https://res.cloudinary.com/dkadjaj7k/image/upload/v1729778831/TheCellar/DomaineDeLaSolitude_Barberini_2017_ymlol5.jpg"
           alt={`Photo du vin ${product.cuvee} du domaine ${product.domaine}`}
         />
-        <Card.Body>
           <Card.Title>
-            ${product.domaine}{' '}
+            {product.domaine}{' '}
             <small>
-              ${product.cuvee} ${product.millesime}
+              {product.cuvee} {product.millesime}
             </small>
           </Card.Title>
 
