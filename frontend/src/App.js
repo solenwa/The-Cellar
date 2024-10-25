@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import Container from 'react-bootstrap/esm/Container';
 import './App.css';
 import NavBar from './components/NavBar';
@@ -11,24 +10,22 @@ import Login from './pages/Login';
 function App() {
   return (
     <BrowserRouter>
-      <HelmetProvider>
-        <header>
-          <NavBar />
-        </header>
-        <main>
-          <Container className="mt-3">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/macave" element={<MaCave />} />
-              <Route path="/macave/:id" element={<DetailBouteille />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </Container>
-        </main>
-        <footer>
-          <div className="text-center"> All rights reserved</div>
-        </footer>
-      </HelmetProvider>
+      <header>
+        <NavBar />
+      </header>
+      <main>
+        <Container className="mt-3">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/macave" element={<MaCave />} />
+            <Route path="/macave/:id" element={<DetailBouteille />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Container>
+      </main>
+      <footer>
+        <div className="text-center"> All rights reserved</div>
+      </footer>
     </BrowserRouter>
   );
 }
