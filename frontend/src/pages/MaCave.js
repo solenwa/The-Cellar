@@ -1,64 +1,62 @@
-import React from 'react';
+import React, { useEffect, useReducer } from 'react';
+import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
-import { Link } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
+import Product from '../components/Product';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS':
+      return { ...state, products: action.payload, loading: false };
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 function MaCave() {
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
+    products: [],
+    loading: true,
+    error: '',
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: 'FETCH_REQUEST' });
+      try {
+        const result = await axios.get('/api/products');
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <h1 className="display-3">Ma Cave</h1>
       <Container>
-        <Row>
-          <Col>
-            <Link to="/macave/detailbouteille">
-              <Card style={{ width: '18rem' }}>
-                <Card.Img
-                  variant="top"
-                  src="https://res.cloudinary.com/dkadjaj7k/image/upload/v1729778831/TheCellar/DomaineDeLaSolitude_Barberini_2017_ymlol5.jpg"
-                />
-                <Card.Body>
-                  <Card.Title>
-                    Domaine de la Solitude <small>Barberini 2017</small>
-                  </Card.Title>
-
-                  <Card.Text>Grenache, Mourvèdre, Syrah</Card.Text>
-                </Card.Body>
-              </Card>
-            </Link>
-          </Col>
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img
-                variant="top"
-                src="https://res.cloudinary.com/dkadjaj7k/image/upload/v1729778831/TheCellar/DomaineDeLaSolitude_Barberini_2017_ymlol5.jpg"
-              />
-              <Card.Body>
-                <Card.Title>
-                  Domaine de la Solitude <small>Barberini 2017</small>
-                </Card.Title>
-
-                <Card.Text>Grenache, Mourvèdre, Syrah</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card style={{ width: '18rem' }}>
-              <Card.Img
-                variant="top"
-                src="https://res.cloudinary.com/dkadjaj7k/image/upload/v1729778831/TheCellar/DomaineDeLaSolitude_Barberini_2017_ymlol5.jpg"
-              />
-              <Card.Body>
-                <Card.Title>
-                  Domaine de la Solitude <small>Barberini 2017</small>
-                </Card.Title>
-
-                <Card.Text>Grenache, Mourvèdre, Syrah</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+        {loading ? (
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : (
+          <Row>
+            {products.map((product) => (
+              <Col key={product._id}>
+                <Product product={product}></Product>
+              </Col>
+            ))}
+          </Row>
+        )}
       </Container>
     </div>
   );
