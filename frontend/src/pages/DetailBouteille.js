@@ -121,7 +121,7 @@ function DetailBouteille() {
                 </Col>
                 <Col>
                   <Card className="border-0">
-                    <h3>Couleur</h3>
+                    <h3>Type</h3>
                     <p>{product.couleur}</p>
                   </Card>
                 </Col>
