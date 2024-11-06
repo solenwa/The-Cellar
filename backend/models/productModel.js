@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema(
     quantite: { type: Number, required: true },
     region: { type: String, required: true },
     taille: { type: String, required: true },
+    cepages: { type: Object, required: false},
     image: {
       publicId: {
         type: String,

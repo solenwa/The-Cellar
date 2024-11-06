@@ -7,6 +7,7 @@ import MaCave from './pages/MaCave';
 import DetailBouteille from './pages/DetailBouteille';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import AjouterUneBouteille from './pages/AjouterUneBouteille';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/macave" element={<MaCave />} />
             <Route path="/macave/:id" element={<DetailBouteille />} />
+            <Route path="/ajouterunebouteille" element={<AjouterUneBouteille />}/>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>

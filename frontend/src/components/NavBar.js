@@ -24,6 +24,7 @@ function NavBar() {
             <Nav className="me-auto">
               <Nav.Link href="/macave">Ma Cave</Nav.Link>
               <Nav.Link href="#link">Mes Dégustations</Nav.Link>
+              <Nav.Link href="/ajouterunebouteille">Ajouter une bouteille</Nav.Link>
               <Nav.Link onClick={logoutHandler}>Déconnexion</Nav.Link>
             </Nav>
           ) : (
